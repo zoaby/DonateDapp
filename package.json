@@ -1,6 +1,7 @@
 {
   "name": "donate-dapp",
   "version": "0.0.0",
+  "main": "server.js",
   "scripts": {
     "postinstall": "ng build --aot -prod",
     "ng": "ng",
