@@ -101,6 +101,12 @@ async refreshBalance() {
   }
 }
 
+
+
+
+
+
+
   async  finalize(request){
     if(request.amount === 0){
       this.message= "Enter real amount"
@@ -144,6 +150,12 @@ setTimeout(async()=> {
           else {
             this.setStatus('Transaction complete!');
             this.sent = true;
+            this.http.post('/api/finalize', request)
+            .subscribe(res=> {
+              console.log('finalized')
+            }, err => {
+              console.log('error finalizing this request');
+            })
 
           }
         }

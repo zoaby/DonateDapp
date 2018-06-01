@@ -32,6 +32,26 @@ router.post('/register', function (req, res) {
   }
 })
 
+
+
+
+
+
+router.post('/finalize', (req, res) => {
+Request.findOneAndUpdate(req.body, { $set: { finalized: true } }, (err, data)=> {
+  if (err) {
+    console.log(err);
+  }
+  else {
+    console.log('finalized');
+    res.send(data);
+
+  }
+})
+})
+
+
+
 router.post('/profile', function (req, res) {
   // console.log("req.bodyyyyy",req.body);
   User.findOne({username: req.body.username}, function (err, user) {
@@ -287,4 +307,8 @@ router.post('/getSender', async (req, res) => {
     res.send(sender)
   }
 })
+
+
+
+
 module.exports = router
